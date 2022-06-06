@@ -44,7 +44,7 @@ private fun createLightTheme(shareTheme: () -> Unit, application: Application, a
     val lightMonetFile = "monet_light.attheme"
     val lightThemeImport = application.assets.open(lightMonetFile).bufferedReader().readText()
     val themeString = changeText(lightThemeImport, applicationContext)
-    val fileName = "Light Monet Theme.attheme"
+    val fileName = "Light Theme.attheme"
 
     File(applicationContext.cacheDir, fileName).writeText(text = themeString)
     shareTheme()
