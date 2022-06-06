@@ -33,7 +33,7 @@ fun DarkThemeCard(shareTheme: () -> Unit,  application: Application, application
 fun createDarkTheme(shareTheme: () -> Unit, application: Application, applicationContext: Context) {
     val darkMonetFile = "monet_dark.attheme"
     val darkThemeImport = application.assets.open(darkMonetFile).bufferedReader().readText()
-    val themeString = changeText(darkThemeImport, applicationContext)
+    val themeString = changeText(darkThemeImport)
     val fileName = "Dark Monet Theme.attheme"
 
     File(applicationContext.cacheDir, fileName).writeText(text = themeString)
@@ -41,37 +41,39 @@ fun createDarkTheme(shareTheme: () -> Unit, application: Application, applicatio
 }
 
 @Composable
-fun changeText(file: String, applicationContext: Context): String {
+fun changeText(file: String): String {
     val monetList = mapOf(
-        "surface" to monet.surface,
-        "surfaceTint" to monet.surfaceTint,
-        "inverseOnSurface" to monet.inverseOnSurface,
-        "surfaceVariant" to monet.surfaceVariant,
-        "" to monet.onSurface,
-        "" to monet.onSurfaceVariant,
-        "" to monet.primary,
-        "" to monet.primaryContainer,
-        "" to monet.inversePrimary,
-        "" to monet.onPrimary,
-        "" to monet.onPrimaryContainer,
-        "" to monet.secondary,
-        "" to monet.secondaryContainer,
-        "" to monet.onSecondary,
-        "" to monet.onSecondaryContainer,
-        "" to monet.tertiary,
-        "" to monet.tertiaryContainer,
-        "" to monet.onTertiary,
-        "" to monet.onTertiaryContainer,
-        "" to monet.error,
-        "" to monet.errorContainer,
-        "" to monet.onError,
-        "" to monet.onErrorContainer,
-        "" to monet.outline,
-        "none" to Color.Transparent,
+        "surface" to monet.surface.toArgb(),
+        "surfaceTint" to monet.surfaceTint.toArgb(),
+        "inverseOnSurface" to monet.inverseOnSurface.toArgb(),
+        "surfaceVariant" to monet.surfaceVariant.toArgb(),
+        "onSurface" to monet.onSurface.toArgb(),
+        "onSurfaceVariant" to monet.onSurfaceVariant.toArgb(),
+        "primary" to monet.primary.toArgb(),
+        "primaryContainer" to monet.primaryContainer.toArgb(),
+        "inversePrimary" to monet.inversePrimary.toArgb(),
+        "onPrimary" to monet.onPrimary.toArgb(),
+        "onPrimaryContainer" to monet.onPrimaryContainer.toArgb(),
+        "secondary" to monet.secondary.toArgb(),
+        "secondaryContainer" to monet.secondaryContainer.toArgb(),
+        "onSecondary" to monet.onSecondary.toArgb(),
+        "onSecondaryContainer" to monet.onSecondaryContainer.toArgb(),
+        "tertiary" to monet.tertiary.toArgb(),
+        "tertiaryContainer" to monet.tertiaryContainer.toArgb(),
+        "onTertiary" to monet.onTertiary.toArgb(),
+        "onTertiaryContainer" to monet.onTertiaryContainer.toArgb(),
+        "error" to monet.error.toArgb(),
+        "errorContainer" to monet.errorContainer.toArgb(),
+        "onError" to monet.onError.toArgb(),
+        "onErrorContainer" to monet.onErrorContainer.toArgb(),
+        "outline" to monet.outline.toArgb(),
+        "none" to Color.Transparent.toArgb(),
     )
+
     var themeText = file.replace("\$", "")
     monetList.forEach {
         themeText = themeText.replace(it.key, it.value.toString())
     }
+
     return themeText
 }
