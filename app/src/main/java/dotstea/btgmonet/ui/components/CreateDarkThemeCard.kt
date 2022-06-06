@@ -29,10 +29,7 @@ fun CreateDarkThemeCard(shareTheme: () -> Unit, application: Application, applic
             createDarkTheme(shareTheme, application, applicationContext)
     }
 
-    Card(
-        Modifier
-            .padding(32.dp)
-            .fillMaxWidth(), RoundedCornerShape(32.dp)) {
+    Card(Modifier.padding(32.dp).fillMaxWidth(), RoundedCornerShape(32.dp)) {
         Button(onClick = { createDarkThemeState =! createDarkThemeState }) {
             Text(text = "Create Dark Theme")
         }

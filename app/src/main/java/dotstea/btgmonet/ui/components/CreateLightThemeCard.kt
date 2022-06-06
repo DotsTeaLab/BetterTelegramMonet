@@ -2,6 +2,7 @@ package dotstea.btgmonet.ui.components
 
 import android.app.Application
 import android.content.Context
+import android.graphics.Color.toArgb
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,10 +30,7 @@ fun CreateLightThemeCard(shareTheme: () -> Unit, application: Application, appli
                 createLightTheme(shareTheme, application, applicationContext)
     }
 
-    Card(
-        Modifier
-            .padding(32.dp)
-            .fillMaxWidth(), RoundedCornerShape(32.dp)) {
+    Card(Modifier.padding(32.dp).fillMaxWidth(), RoundedCornerShape(32.dp)) {
         Button(onClick = { createLightThemeState =! createLightThemeState }) {
             Text(text = "Create Light Theme")
         }
