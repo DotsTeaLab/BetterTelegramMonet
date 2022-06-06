@@ -13,38 +13,38 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import dotstea.btgmonet.R
-import dotstea.btgmonet.ui.theme.DarkTheme
+import dotstea.btgmonet.ui.theme.LightTheme
 import java.io.File
 import androidx.compose.material3.MaterialTheme.colorScheme as monet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateDarkThemeCard(shareTheme: () -> Unit, application: Application, applicationContext: Context) {
-    var createDarkThemeState by remember { mutableStateOf(false) }
+fun CreateLightThemeCard(shareTheme: () -> Unit, application: Application, applicationContext: Context) {
+    var createLightThemeState by remember { mutableStateOf(false) }
 
-    DarkTheme() {
-        if (!createDarkThemeState)
-            createDarkThemeState =! createDarkThemeState
-        else
-            createDarkTheme(shareTheme, application, applicationContext)
+    LightTheme() {
+        if (!createLightThemeState)
+            createLightThemeState =! createLightThemeState
+            else
+                createLightTheme(shareTheme, application, applicationContext)
     }
 
     Card(
         Modifier
             .padding(32.dp)
             .fillMaxWidth(), RoundedCornerShape(32.dp)) {
-        Button(onClick = { createDarkThemeState =! createDarkThemeState }) {
-            Text(text = "Create Dark Theme")
+        Button(onClick = { createLightThemeState =! createLightThemeState }) {
+            Text(text = "Create Light Theme")
         }
     }
 }
 
 @Composable
-private fun createDarkTheme(shareTheme: () -> Unit, application: Application, applicationContext: Context) {
-    val darkMonetFile = "monet_dark.attheme"
-    val darkThemeImport = application.assets.open(darkMonetFile).bufferedReader().readText()
-    val themeString = changeText(darkThemeImport, applicationContext)
-    val fileName = "Dark Monet Theme.attheme"
+private fun createLightTheme(shareTheme: () -> Unit, application: Application, applicationContext: Context) {
+    val lightMonetFile = "monet_light.attheme"
+    val lightThemeImport = application.assets.open(lightMonetFile).bufferedReader().readText()
+    val themeString = changeText(lightThemeImport, applicationContext)
+    val fileName = "Light Monet Theme.attheme"
 
     File(applicationContext.cacheDir, fileName).writeText(text = themeString)
     shareTheme()

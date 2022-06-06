@@ -14,11 +14,13 @@ import java.io.File
 
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val darkThemeFileName = "Dark Theme.attheme"
-        val darkThemeName = "DarkTheme"
+        val darkThemeName = "Dark"
+        val lightThemeFileName = "Light Theme.attheme"
+        val lightThemeName = "Light"
+
 
         setContent {
             BTGMonetTheme {
@@ -27,7 +29,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen(application, applicationContext) { shareTheme(darkThemeName, darkThemeFileName) }
+                    MainScreen(
+                        application,
+                        applicationContext,
+                        { shareTheme(darkThemeName, darkThemeFileName) },
+                        { shareTheme(lightThemeName, lightThemeFileName) }
+                    )
                 }
             }
         }
