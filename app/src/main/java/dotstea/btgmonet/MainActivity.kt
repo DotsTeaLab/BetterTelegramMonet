@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val darkThemeFileName = "Dark Theme.attheme"
-        val darkThemeName = "Dark"
+        val darkThemeName = "DarkTheme"
         val lightThemeFileName = "Light Theme.attheme"
         val lightThemeName = "Light"
 

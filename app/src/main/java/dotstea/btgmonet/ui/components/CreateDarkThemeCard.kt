@@ -41,7 +41,7 @@ private fun createDarkTheme(shareTheme: () -> Unit, application: Application, ap
     val darkMonetFile = "monet_dark.attheme"
     val darkThemeImport = application.assets.open(darkMonetFile).bufferedReader().readText()
     val themeString = changeText(darkThemeImport, applicationContext)
-    val fileName = "Dark Monet Theme.attheme"
+    val fileName = "Dark Theme.attheme"
 
     File(applicationContext.cacheDir, fileName).writeText(text = themeString)
     shareTheme()
